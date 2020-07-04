@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t lookas/docker-test -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true lookas/docker-test npm run test
